@@ -1,4 +1,4 @@
-# 養樂多寵物樂園 (Yakult Pet Paradise) 品牌官方網站
+# 養樂多寵物樂園 (Yakult Pet Paradise) 品牌官方網站~~課堂練習
 
 > **核心賣點：寵愛你的毛小孩**  
 > 依據 YouTube 官方頻道 **[@養樂多寵物樂園](https://www.youtube.com/@%E9%A4%8A%E6%A8%82%E5%A4%9A%E5%AF%B5%E7%89%A9%E6%A8%82%E5%9C%92)** 視覺風格提煉設計。  
