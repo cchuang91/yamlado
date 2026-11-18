@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="養樂多寵物樂園 - 寵愛你的毛小孩。依據 @養樂多寵物樂園 品牌視覺打造，一站式滿足貓狗日常起居、天然鮮肉罐頭、機能乾糧、耐咬玩具與護理保健。">
+  <title>養樂多寵物樂園 | 寵愛你的毛小孩</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 鍵盤無障礙跳越連結 -->
+  <a href="#main-content" class="skip-to-content">跳至主要內容</a>
+
+  <!-- 1. 限時活動倒數橫幅 (暖陽橙至圍巾紅漸層 + 固定時區倒數 + 優惠碼複製) -->
+  <aside id="promoBanner" class="promo-banner" aria-label="限時促銷公告">
+    <div class="container promo-container">
+      <div class="promo-main-info">
+        <span class="promo-tag">樂園狂歡祭</span>
+        <span id="promoTitle" class="promo-text-lead">【毛孩感恩祭】全館精選商品限時 88 折優惠</span>
+        <span id="promoSubtitle" class="promo-subtitle-text">（本活動為展示示例）</span>
+      </div>
+
+      <!-- 倒數計時區 (天、時、分、秒) -->
+      <div id="promoCountdownWrap" class="promo-countdown-wrap" aria-label="活動剩餘時間">
+        <span class="countdown-label">狂歡倒數：</span>
+        <div class="countdown-box">
+          <span id="countDays" class="countdown-unit">00</span>
+          <span class="countdown-label">天</span>
+          <span id="countHours" class="countdown-unit">00</span>
+          <span class="countdown-label">時</span>
+          <span id="countMinutes" class="countdown-unit">00</span>
+          <span class="countdown-label">分</span>
+          <span id="countSeconds" class="countdown-unit">00</span>
+          <span class="countdown-label">秒</span>
+        </div>
+      </div>
+
+      <!-- 活動已結束狀態徽章 -->
+      <span id="promoExpiredBadge" class="promo-expired-badge" style="display: none;">
+        本期樂園活動已圓滿結束
+      </span>
+
+      <!-- 優惠碼複製按鈕 -->
+      <button id="copyPromoBtn" type="button" class="promo-code-btn" aria-label="點擊複製優惠碼 PET888">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+        <span>專屬優惠碼：<strong>PET888</strong> (點擊複製)</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- 2. 全站頂部導覽列 (樂園森林綠風格，支援手機展開/關閉、純鍵盤操作) -->
+  <header class="site-header">
+    <div class="container navbar">
+      <!-- 品牌 Logo -->
+      <a href="#" class="brand-logo" aria-label="養樂多寵物樂園 首頁">
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="4.5" cy="9.5" r="2.5"/>
+          <circle cx="9" cy="5.5" r="2.5"/>
+          <circle cx="15" cy="5.5" r="2.5"/>
+          <circle cx="19.5" cy="9.5" r="2.5"/>
+          <path d="M17.34 14.86c-.87-1.02-1.6-1.89-2.48-2.49-1.64-1.12-3.08-1.12-4.72 0-.88.6-1.61 1.47-2.48 2.49-1.52 1.77-2.66 3.65-1.42 5.56 1.15 1.77 3.39 1.58 5.76 1.58s4.61.19 5.76-1.58c1.24-1.91.1-3.79-1.42-5.56z"/>
+        </svg>
+        <span>養樂多寵物樂園</span>
+      </a>
+
+      <!-- 手機版選單切換按鈕 -->
+      <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="切換導覽選單">
+        <svg class="icon-hamburger" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true" style="display: none;">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+
+      <!-- 導覽連結清單 -->
+      <nav id="navMenu" class="nav-menu" aria-label="主要導覽">
+        <a href="#hero" class="nav-link">樂園首頁</a>
+        <a href="#brand-story" class="nav-link">認識品牌</a>
+        <a href="#catalog" class="nav-link">商品型錄</a>
+        <a href="#preorder" class="nav-link">
+          預購清單
+          <span id="navPreorderCount" class="nav-cart-badge" style="display: none;">0</span>
+        </a>
+        <a href="#reviews" class="nav-link">毛孩好評</a>
+        <a href="#faq" class="nav-link">常見問題</a>
+        <a href="#contact" class="nav-link">門市聯絡</a>
+        <div class="nav-cta">
+          <a href="#catalog" class="btn btn-primary btn-block">立即選購</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 3. 主要內容區 -->
+  <main id="main-content">
+    <!-- 首屏主視覺區 (Hero Section - 陽光森林樂園風格) -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-badge">
+          🐾 歡迎光臨「養樂多寵物樂園」· 多多與樂樂的快樂生活基地
+        </div>
+        <h1 class="hero-title">
+          寵愛你的<span class="highlight-orange">毛小孩</span>，盡在<span class="highlight-green">養樂多寵物樂園</span>
+        </h1>
+        <p class="hero-subtitle">
+          如同汪星人多多與紅圍巾貓咪樂樂的日常陪伴，我們為每隻像家人般的毛孩把關生活細節。無論是天然無穀主食、耐咬益智玩具，還是日常除臭與關節保養，全方位解決貓狗所有生活需求！
+        </p>
+        <div class="hero-actions">
+          <a href="#catalog" class="btn btn-primary">看樂園商品</a>
+          <a href="#brand-story" class="btn btn-secondary">認識品牌故事</a>
+        </div>
+        <div class="hero-features">
+          <div class="feature-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <span>🌳 樂園森林安心嚴選</span>
+          </div>
+          <div class="feature-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span>❤️ 貓狗和諧傾心寵愛</span>
+          </div>
+          <div class="feature-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-2 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+            <span>🚚 在地急速安心出貨</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 品牌故事 (Brand Story) -->
+    <section id="brand-story" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">BRAND STORY</span>
+          <h2 class="section-title">為什麼創立「養樂多寵物樂園」？</h2>
+          <p class="section-desc">從真實家庭的貓狗歡樂相處出發，打造毛小孩最愛奔跑探索的溫暖園地。</p>
+        </div>
+
+        <div class="story-card">
+          <div class="story-lead">
+            「看著毛小孩燦爛的笑容與奔跑身影，就是家長最純粹的幸福。」
+          </div>
+          <div class="story-body">
+            <p>
+              在「養樂多寵物樂園」裡，有活潑愛奔跑的虎斑狗狗<strong>多多</strong>，以及總是戴著招牌紅圍巾、優雅又帶點小傲嬌的貓咪<strong>樂樂</strong>。牠們讓我們看見：只要給予足夠的耐心、健康的飲食與安全的玩具，貓咪與狗狗也能在同一個屋簷下和諧生活、共享快樂。
+            </p>
+            <p>
+              我們將這份熱愛轉化為這座專屬商店，專注於解決<strong>任何貓狗會需要用到的商品</strong>。從挑嘴主食凍乾、耐咬磨牙漏食球、散步減壓胸背帶，到純天然環境抑菌消臭噴霧，每一項商品都經過多多與樂樂的嚴格「親測喜愛」，給全天下的毛孩如樂園般無憂無慮的寵愛！
+            </p>
+          </div>
+
+          <div class="story-values">
+            <div class="value-item">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              </div>
+              <div>
+                <h4>樂園級健康把關</h4>
+                <p>嚴苛審核原物料安全，不含人工化學添加，守護純粹體質。</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </div>
+              <div>
+                <h4>多多與樂樂親測</h4>
+                <p>店犬多多與店貓樂樂實測挑嘴度與耐磨耐咬度，滿意才上架。</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+              </div>
+              <div>
+                <h4>全年齡一站齊全</h4>
+                <p>解決貓狗食衣住行育樂所需，省去在不同通路奔波的繁瑣。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 商品型錄、分類篩選與即時搜尋 (Product Catalog Section) -->
+    <section id="catalog" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">PET PARADISE CATALOG</span>
+          <h2 class="section-title">
+            樂園生活嚴選型錄
+            <span class="mock-badge">※ 示例資料</span>
+          </h2>
+          <p class="section-desc">支援即時關鍵字搜尋與分類快速過濾，輕鬆找到寶貝所需的好物。</p>
+        </div>
+
+        <!-- 搜尋列與分類篩選器 (可同時協同運作) -->
+        <div class="catalog-controls">
+          <div class="search-bar-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+            <input
+              type="text"
+              id="catalogSearch"
+              class="search-input"
+              placeholder="搜尋商品名稱、成分或關鍵字（例如：罐頭、凍乾、除臭、胸背帶...）"
+              aria-label="搜尋商品"
+            >
+            <button id="searchClearBtn" class="search-clear-btn" type="button" aria-label="清除搜尋關鍵字">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+          </div>
+
+          <!-- 分類標籤切換區 -->
+          <div id="categoryFilters" class="category-filters" role="toolbar" aria-label="商品分類篩選">
+            <!-- 由 js/app.js 動態渲染分類按鈕 -->
+          </div>
+        </div>
+
+        <!-- 商品卡片網格 (由 js/app.js 動態渲染，使用 textContent 填入) -->
+        <div id="productGrid" class="product-grid" aria-live="polite">
+          <!-- 動態載入商品 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 預購清單專區 (Pre-order List / Cart) -->
+    <section id="preorder" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">PRE-ORDER LIST</span>
+          <h2 class="section-title">我的毛孩預購清單</h2>
+          <p class="section-desc">加入欲採買商品後，可直接複製明細或下載純文字單，貼給官方 LINE 或 IG 專人快速保留！</p>
+        </div>
+
+        <div class="preorder-card">
+          <!-- 空清單提示 -->
+          <div id="preorderEmpty" class="preorder-empty">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+            <p>目前預購清單是空的，歡迎前往上方型錄挑選心儀的毛孩用品！</p>
+          </div>
+
+          <!-- 已選商品項目清單 (由 js/app.js 動態渲染) -->
+          <div id="preorderList" class="preorder-list"></div>
+
+          <!-- 結算金額統計區 -->
+          <div id="preorderSummary" class="preorder-summary" style="display: none;">
+            <div class="summary-row">
+              <span>商品原價小計</span>
+              <strong id="summarySubtotal">NT$ 0</strong>
+            </div>
+            <div id="summaryDiscountRow" class="summary-row discount-row" style="display: none;">
+              <span>限時活動折抵 (PET888 優惠)</span>
+              <strong id="summaryDiscount">- NT$ 0</strong>
+            </div>
+            <div class="summary-row total-row">
+              <span>預估總金額</span>
+              <strong id="summaryTotal">NT$ 0</strong>
+            </div>
+          </div>
+
+          <!-- 聯絡人表單與動作按鈕 -->
+          <div id="preorderFormBox" style="display: none;">
+            <div class="preorder-form-grid">
+              <div class="form-group">
+                <label for="customerNickname" class="form-label">
+                  聯絡人暱稱 / 毛孩稱呼 <span class="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="customerNickname"
+                  class="form-control"
+                  placeholder="例如：多多麻麻、樂樂爸比"
+                  required
+                >
+                <span id="nicknameFeedback" class="form-feedback">請填寫聯絡人暱稱，以便為您保留商品！</span>
+              </div>
+              <div class="form-group">
+                <label for="customerNotes" class="form-label">
+                  訂單備註 / 送達需求（選填）
+                </label>
+                <textarea
+                  id="customerNotes"
+                  class="form-control"
+                  rows="2"
+                  placeholder="例如：平日白天方便收貨、胸背帶請備註紅色款等"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="preorder-actions">
+              <button id="copyPreorderBtn" type="button" class="btn btn-primary">
+                📋 複製預購明細文字
+              </button>
+              <button id="downloadTxtBtn" type="button" class="btn btn-secondary">
+                💾 下載預購單 (.txt)
+              </button>
+            </div>
+            <p class="preorder-tip">
+              ※ 提示：複製或下載明細後，可直接貼至【養樂多寵物樂園】官方 LINE 或 IG 私訊小編，即可由專人為您核對現貨並安排出貨！
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 顧客口碑動態網格 (Reviews Section) -->
+    <section id="reviews" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">TESTIMONIALS</span>
+          <h2 class="section-title">
+            毛孩家長好評見證
+            <span class="mock-badge">※ 示例資料</span>
+          </h2>
+          <p class="section-desc">陪伴成千上萬隻毛孩的真實回饋與信賴分享。</p>
+        </div>
+
+        <div id="reviewGrid" class="review-grid">
+          <!-- 由 js/app.js 從 data.js 動態渲染 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FAQ 常見問題手風琴 (FAQ Section) -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">FAQ</span>
+          <h2 class="section-title">
+            常見問題
+            <span class="mock-badge">※ 示例資料</span>
+          </h2>
+          <p class="section-desc">解答毛爸毛媽最常詢問的商品挑選與送達問題，支援鍵盤無障礙展開。</p>
+        </div>
+
+        <div id="faqList" class="faq-list">
+          <!-- 由 js/app.js 從 data.js 動態渲染 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. 聯絡資訊區 (Contact Section) -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">CONTACT US</span>
+          <h2 class="section-title">樂園實體門市與聯絡資訊</h2>
+          <p class="section-desc">歡迎帶著毛小孩親臨門市參觀，或隨時與我們的樂園服務團隊聯絡。</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>養樂多寵物樂園 旗艦生活館</h3>
+            <div class="contact-info-list">
+              <div class="contact-info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div>
+                  <strong>樂園門市地址</strong>
+                  <span>台北市大安區忠孝東路四段 88 號（近忠孝復興站）</span>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <div>
+                  <strong>服務專線</strong>
+                  <span>(02) 2345-6789（週一至週日 10:00 - 21:00）</span>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <div>
+                  <strong>客服信箱 / LINE / IG / YouTube</strong>
+                  <span>service@yakultpet.tw ｜ LINE: @yakultpet ｜ IG: @yakult_pets ｜ YT: @養樂多寵物樂園</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>毛孩友善服務叮嚀</h3>
+            <div class="contact-info-list">
+              <div class="contact-info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                <div>
+                  <strong>樂園營業時間</strong>
+                  <span>每日 10:00 - 21:00（全年無休，毛孩守護不間斷）</span>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <div>
+                  <strong>毛孩進店提醒</strong>
+                  <span>歡迎帶毛孩同行！店內備有牽繩安全扣環與免費寵物飲水機，請配合繫好牽繩或入推車。</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 9. 商品詳情彈窗 (Modal - 支援 Esc 與背景點擊關閉，textContent 安全注入) -->
+  <div id="productModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+    <div class="modal-dialog">
+      <button id="modalCloseBtn" type="button" class="modal-close-btn" aria-label="關閉商品詳情視窗">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+
+      <div class="modal-header">
+        <span id="modalCategory" class="modal-category-badge">分類標籤</span>
+        <h2 id="modalTitle" class="modal-title">商品名稱</h2>
+        <div id="modalPrice" class="modal-price">NT$ 0</div>
+      </div>
+
+      <div class="modal-body">
+        <p id="modalShortDesc" style="font-weight: 800; margin-bottom: 8px; color: var(--color-text-main);"></p>
+        <div id="modalDescBox" class="modal-desc-box">
+          <p id="modalFullDesc"></p>
+        </div>
+        <div class="modal-spec-box">
+          <div id="modalSpec">規格資訊</div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="modalAddToCartBtn" type="button" class="btn btn-primary" style="flex: 2;">加入預購清單</button>
+        <button id="modalCancelBtn" type="button" class="btn btn-outline" style="flex: 1;">關閉</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. 浮動 Toast 操作反饋 -->
+  <div id="toastNotice" class="toast-notice" role="status" aria-live="polite">
+    <svg style="width: 20px; height: 20px; fill: #22C55E;" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+    </svg>
+    <span id="toastNoticeText">已成功完成操作</span>
+  </div>
+
+  <!-- 11. 全站頁尾 (Footer - 森林綠沉穩底色) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>養樂多寵物樂園</h3>
+          <p>
+            核心賣點：寵愛你的毛小孩。<br>
+            滿足任何貓狗生活所需的高品質安心選品，給寶貝如置身森林樂園般的健康與溫暖呵護。
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>網站導覽</h4>
+          <ul>
+            <li><a href="#hero">樂園首頁</a></li>
+            <li><a href="#brand-story">品牌故事</a></li>
+            <li><a href="#catalog">商品型錄</a></li>
+            <li><a href="#preorder">預購清單</a></li>
+            <li><a href="#reviews">好評見證 (示例)</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>顧客服務</h4>
+          <ul>
+            <li><a href="#faq">常見問答 (示例)</a></li>
+            <li><a href="#contact">門市資訊</a></li>
+            <li><a href="#contact">聯絡我們</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 養樂多寵物樂園 Yakult Pet Paradise. 版權所有。純原生前端技術打造。</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 引入本地資料與核心腳本 -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
